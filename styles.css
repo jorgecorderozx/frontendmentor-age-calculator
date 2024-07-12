@@ -32,7 +32,6 @@ form {
     padding: 1.5rem;
     border-radius: 1rem 1rem 6rem 1rem;
     flex-direction: column;
-    position: relative;
 
 }
 
@@ -40,6 +39,8 @@ form {
     gap: 1rem;
     padding-bottom: 3rem;
     border-bottom: 1px solid var(--light-grey);
+    position: relative;
+    justify-content: center;
 }
 
 .dateIndContainer {
@@ -56,7 +57,7 @@ label {
 
 input {
     width: 100%;
-    height: 2rem;
+    height: 2.7rem;
     font-size: 16px;
     font-weight: 700;
     border: 1px solid var(--light-grey);
@@ -71,10 +72,16 @@ span {
 button {
     background-color: var(--purple);
     border: none;
-    align-self: center;
     border-radius: 50%;
     padding: 2rem;
     position: absolute;
-    top: 33%;
+    top: 53%;
     scale: 0.5;
+}
+
+.dateOutputContainer {
+    font-size: 45px;
+    font-weight: 800;
+    font-style: italic;
+    margin-top: 4rem;
 }
