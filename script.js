@@ -1,17 +1,11 @@
 let inputs = document.querySelectorAll("input");
 let errors = document.getElementsByClassName("errorMessage");
 let arrowButton = document.querySelector("button");
-let monthsAndDays = [];
-
-for (month = 1; month <= 12; month++) {
-    if (month < 8) monthsAndDays.push({ month: month, days: (month % 2 != 0) ? 31 : 30 });
-    else monthsAndDays.push({ month: month, days: (month % 2 == 0) ? 31 : 30 });
-}
-monthsAndDays[1].days = 28;
 
 function isEmpty() {
     for (input = 0; input < inputs.length; input++) {
-        (inputs[input].value === "") ? errorDisplay(true) : errorDisplay(false); 
+        (inputs[input].value === "") ? errorDisplay(true) : errorDisplay(false);
+        errors[input].textContent = "This field is required";
     }
 }
 
@@ -26,8 +20,17 @@ function errorDisplay(bool) {
     }
 }
 
-function isLeapYear(year) {
-    return ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0))
+function dateValidation(){
+    
 }
 
-arrowButton.addEventListener("click", isEmpty)
+function ageCalculation(){
+    let today = new Date();
+    let birthDate = new Date(parseInt(inputs[2].value), parseInt(inputs[1].value), parseInt(inputs[0].value));
+
+}
+
+arrowButton.addEventListener("click", () =>{
+    isEmpty()
+    ageCalculation()
+})
