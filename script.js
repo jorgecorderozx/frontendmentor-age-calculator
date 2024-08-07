@@ -1,5 +1,8 @@
 const inputs = document.querySelectorAll("input");
 const errors = document.querySelectorAll(".errorMessage");
+let dayOut = document.getElementById("daysOutput");
+let monthOut = document.getElementById("monthsOutput");
+let yearsOut = document.getElementById("yearsOutput");
 const submitButton = document.querySelector("button");
 
 let today, todayDate, todayMonth, todayYear;
@@ -101,8 +104,25 @@ function dateValidation() {
     } 
 }
 
+function ageCalculation(){
+    if(valid){
+        let yearDiff = todayYear - yearVal;
+        let monthDiff = todayMonth - monthVal;
+        if(monthDiff < 0) yearDiff--;
+        let dayDiff = todayDate - dayVal;
+        if(dayDiff < 0) monthDiff--;
+        dayOut.textContent = dayDiff;
+        monthOut.textContent = monthDiff;
+        yearsOut.textContent = yearDiff;
+        
+    }
+}
+
 inputs.forEach((input) => {
     input.addEventListener("input", dateValidation)
 })
 
-submitButton.addEventListener("click", isEmpty);
+submitButton.addEventListener("click", ()=>{
+    isEmpty();
+    ageCalculation();
+});
