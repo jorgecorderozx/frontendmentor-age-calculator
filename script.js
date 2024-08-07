@@ -10,10 +10,10 @@ let dayVal, monthVal, yearVal;
 
 let valid;
 
-function isEmpty(){
+function isEmpty() {
     inputs.forEach((input, index) => {
         input.value === "" ? errorDisplay(true, index, "This field is required") : errorDisplay(false, index);
-        if(input.value === "") valid = false;
+        if (input.value === "") valid = false;
     })
 }
 
@@ -29,8 +29,8 @@ function errorDisplay(bool, index, message = "This field is required") {
     }
 }
 
-function getMonthDays(month, year){
-    switch(month){
+function getMonthDays(month, year) {
+    switch (month) {
         case 2:
             return isLeapYear(year) ? 29 : 28;
 
@@ -58,12 +58,12 @@ function dateValidation() {
     yearVal = parseInt(inputs[2].value);
 
     /* Year Validation*/
-    
-    if(yearVal > todayYear){
+
+    if (yearVal > todayYear) {
         errorDisplay(true, 2, "Must be in the past");
         valid = false;
     }
-    else if (yearVal < 0){
+    else if (yearVal < 0) {
         errorDisplay(true, 2, "Must be a valid year");
         valid = false;
     }
@@ -73,48 +73,66 @@ function dateValidation() {
 
     /*Month Validation*/
 
-    if(monthVal < 1 || monthVal > 12){
+    if (monthVal < 1 || monthVal > 12) {
         errorDisplay(true, 1, "Must be a valid month");
         valid = false;
     }
     else {
         errorDisplay(false, 1);
-        if(yearVal === todayYear && monthVal > todayMonth){
+        if (yearVal === todayYear && monthVal > todayMonth) {
             errorDisplay(true, 2, "");
             errorDisplay(true, 1, "Must be in the past");
             valid = false;
         }
-        
+
     }
 
     /*Day Validation*/
 
-    if(dayVal < 1 || dayVal > getMonthDays(monthVal, yearVal)){
+    if (dayVal < 1 || dayVal > getMonthDays(monthVal, yearVal)) {
         errorDisplay(true, 0, "Must be a valid date");
         valid = false;
     }
     else {
         errorDisplay(false, 0);
-        if(yearVal === todayYear && monthVal === todayMonth && dayVal > todayDate){
+        if (yearVal === todayYear && monthVal === todayMonth && dayVal > todayDate) {
             errorDisplay(true, 0, "Must be in the past");
             errorDisplay(true, 1, "");
             errorDisplay(true, 2, "");
             valid = false;
         }
-    } 
+    }
 }
 
-function ageCalculation(){
-    if(valid){
+function ageCalculation() {
+    if (valid) {
+
         let yearDiff = todayYear - yearVal;
         let monthDiff = todayMonth - monthVal;
-        if(monthDiff < 0) yearDiff--;
         let dayDiff = todayDate - dayVal;
-        if(dayDiff < 0) monthDiff--;
-        dayOut.textContent = dayDiff;
-        monthOut.textContent = monthDiff;
+
+        if (monthDiff < 0) {
+            yearDiff--;
+            monthDiff += 12;
+        }
+
+        if (dayDiff < 0) {
+            monthDiff--;
+            if(monthDiff < 0){
+                monthDiff+=12;
+                yearDiff--;
+            }
+            if (todayMonth != 1) {
+                dayDiff += getMonthDays(todayMonth - 1, todayYear);
+            }
+            else {
+                dayDiff += 31
+            }
+        }
+
         yearsOut.textContent = yearDiff;
-        
+        monthOut.textContent = monthDiff;
+        dayOut.textContent = dayDiff;
     }
 }
 
@@ -122,7 +140,8 @@ inputs.forEach((input) => {
     input.addEventListener("input", dateValidation)
 })
 
-submitButton.addEventListener("click", ()=>{
+submitButton.addEventListener("click", () => {
     isEmpty();
     ageCalculation();
+
 });
