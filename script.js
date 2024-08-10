@@ -130,9 +130,17 @@ function ageCalculation() {
             }
         }
 
-        yearsOut.textContent = yearDiff;
-        monthOut.textContent = monthDiff;
-        dayOut.textContent = dayDiff;
+        function dateOutput(output, value){
+            for(let i = 0; i <= value; i++){
+                setTimeout(()=>{
+                    output.textContent = i;
+                }, i * 10)
+            }
+        }
+
+        dateOutput(yearsOut, yearDiff);
+        dateOutput(monthOut, monthDiff);
+        dateOutput(dayOut, dayDiff);
     }
 }
 
@@ -145,3 +153,4 @@ submitButton.addEventListener("click", () => {
     ageCalculation();
 
 });
+
