@@ -37,7 +37,6 @@ form {
 
 .dateInputsContainer {
     gap: 1rem;
-    /*Change relative padding to absolute over 480px*/
     padding-bottom: 56px;
     border-bottom: 1px solid var(--light-grey);
     position: relative;
@@ -67,6 +66,10 @@ input {
     border-radius: 0.25rem;
 }
 
+input:focus {
+    outline: 1px solid var(--purple);
+}
+
 .errorMessage {
     font-size: 8.7px;
     margin-top: 4px;
@@ -90,9 +93,47 @@ button {
     scale: 0.5;
 }
 
+button:hover {
+    background-color: var(--off-black);
+}
+
 .dateOutputContainer {
-    font-size: 45px;
+    font-size: 53px;
     font-weight: 800;
     font-style: italic;
     margin-top: 4rem;
+}
+
+@media (width >= 480px){
+    button {
+        scale: 0.7;
+    }
+}
+
+@media (min-width:480px) and (max-width:767px){
+
+    .dateOutputContainer {
+        font-size: 10vw;
+        padding-left: 5vw;
+    }
+}
+
+@media (min-width: 768px) and (max-width:1023px){
+
+    form {
+        padding: 3rem;
+    }
+
+    .dateInputsContainer {
+        width: 100%;
+        gap: 0.7rem;
+    }
+
+    input {
+        width: 120px;
+    }
+
+    .dateOutputContainer {
+        font-size: 7vw;
+    }
 }
