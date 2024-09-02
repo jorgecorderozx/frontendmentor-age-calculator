@@ -140,10 +140,15 @@ button:hover {
 
 @media (width >= 1024px){
 
+    body {
+        justify-content: center;
+    }
+
     form {
         min-width: 840px;
         min-height: 650px;
         border-radius: 1rem 1rem 12rem 1rem;
+        margin: 0;
     }
 
     .dateInputsContainer {
@@ -161,6 +166,7 @@ button:hover {
         width: 160px;
         height: 70px;
         margin-top: 0.5rem;
+        font-size: 25px;
     }
 
     input::placeholder {
@@ -170,13 +176,13 @@ button:hover {
     }
 
     button {
-        left: 90%;
+        left: 86%;
         top: 65%;
         scale: 0.9;
     }
 
     .dateOutputContainer {
-        font-size: 115px;
+        font-size: 80px;
         position: relative;
         left: 8%;
     }
