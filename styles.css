@@ -137,3 +137,47 @@ button:hover {
         font-size: 7vw;
     }
 }
+
+@media (width >= 1024px){
+
+    form {
+        min-width: 840px;
+        min-height: 650px;
+        border-radius: 1rem 1rem 12rem 1rem;
+    }
+
+    .dateInputsContainer {
+        width: 90%;
+        align-self: center;
+        justify-content: flex-start;
+        gap: 1.5rem;
+    }
+
+    .dateIndContainer {
+        width: auto;
+    }
+
+    input {
+        width: 160px;
+        height: 70px;
+        margin-top: 0.5rem;
+    }
+
+    input::placeholder {
+        font-size: 25px;
+        padding-left: 0.5rem;
+
+    }
+
+    button {
+        left: 90%;
+        top: 65%;
+        scale: 0.9;
+    }
+
+    .dateOutputContainer {
+        font-size: 115px;
+        position: relative;
+        left: 8%;
+    }
+}
