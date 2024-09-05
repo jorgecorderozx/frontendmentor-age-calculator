@@ -1,7 +1,7 @@
 const inputs = document.querySelectorAll("input");
 const errors = document.querySelectorAll(".errorMessage");
-let dayOut = document.getElementById("daysOutput");
-let monthOut = document.getElementById("monthsOutput");
+let daysOut = document.getElementById("daysOutput");
+let monthsOut = document.getElementById("monthsOutput");
 let yearsOut = document.getElementById("yearsOutput");
 const submitButton = document.querySelector("button");
 
@@ -130,8 +130,8 @@ function ageCalculation() {
             }
         }
 
-        function dateOutput(output, value){
-            for(let i = 0; i <= value; i++){
+        function dateOutput(output, dateDiff){
+            for(let i = 0; i <= dateDiff; i++){
                 setTimeout(()=>{
                     output.textContent = i;
                 }, i * 10)
@@ -139,8 +139,8 @@ function ageCalculation() {
         }
 
         dateOutput(yearsOut, yearDiff);
-        dateOutput(monthOut, monthDiff);
-        dateOutput(dayOut, dayDiff);
+        dateOutput(monthsOut, monthDiff);
+        dateOutput(daysOut, dayDiff);
     }
 }
 
