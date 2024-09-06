@@ -1,8 +1,11 @@
 const inputs = document.querySelectorAll("input");
 const errors = document.querySelectorAll(".errorMessage");
 let daysOut = document.getElementById("daysOutput");
+let daysText = document.getElementById("daysText");
 let monthsOut = document.getElementById("monthsOutput");
+let monthsText = document.getElementById("monthsText");
 let yearsOut = document.getElementById("yearsOutput");
+let yearsText = document.getElementById("yearsText");
 const submitButton = document.querySelector("button");
 
 let today, todayDate, todayMonth, todayYear;
@@ -22,10 +25,12 @@ function errorDisplay(bool, index, message = "This field is required") {
         inputs[index].style.borderColor = "var(--light-red)";
         errors[index].style.visibility = "visible";
         errors[index].textContent = message;
+        inputs[index].classList.add("selected");
     }
     else {
         inputs[index].style.borderColor = "var(--light-grey)";
         errors[index].style.visibility = "hidden";
+        inputs[index].classList.remove("selected");
     }
 }
 
@@ -130,17 +135,18 @@ function ageCalculation() {
             }
         }
 
-        function dateOutput(output, dateDiff){
+        function dateOutput(output, outputTextElem, dateDiff, dateString){
             for(let i = 0; i <= dateDiff; i++){
                 setTimeout(()=>{
                     output.textContent = i;
+                    i === 1 ? outputTextElem.textContent = dateString : outputTextElem.textContent = dateString + "s";
                 }, i * 10)
             }
         }
 
-        dateOutput(yearsOut, yearDiff);
-        dateOutput(monthsOut, monthDiff);
-        dateOutput(daysOut, dayDiff);
+        dateOutput(yearsOut,yearsText,yearDiff, "year");
+        dateOutput(monthsOut, monthsText, monthDiff, "month");
+        dateOutput(daysOut, daysText, dayDiff, "day");
     }
 }
 

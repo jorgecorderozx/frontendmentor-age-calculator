@@ -66,7 +66,11 @@ input {
     border-radius: 0.25rem;
 }
 
-input:focus {
+.selected:focus {
+    outline: 1px solid var(--light-red);
+}
+
+input:not(.selected):focus {
     outline: 1px solid var(--purple);
 }
 
@@ -79,7 +83,7 @@ input:focus {
     
 }
 
-span {
+.ageOutput {
     color: var(--purple);
 }
 
